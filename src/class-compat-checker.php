@@ -76,16 +76,14 @@ class Compat_Checker {
 	protected $parent_theme;
 
 	/**
-	 * Assign properties and run hook.
+	 * Compat_Checker constructor.
 	 *
-	 * @since 1.0.0
+	 * @param bool $config
 	 *
-	 * @param $settings
-	 *
-	 * @return void
+	 * @since 1.0.1
 	 */
-	public function run( $settings = false ) {
-		$this->settings            = $this->get_settings( $settings );
+	public function __construct( $config = false ) {
+		$this->settings            = $this->get_settings( $config );
 		$this->active_theme        = wp_get_theme();
 		$this->parent_theme        = $this->active_theme->parent();
 		$this->plugin_name         = $this->settings['plugin_name'];
@@ -95,7 +93,16 @@ class Compat_Checker {
 		$this->min_genesis_version = $this->settings['min_genesis_version'];
 		$this->require_genesis     = $this->is_truthy( $this->settings['require_genesis'] );
 		$this->require_child_theme = $this->is_truthy( $this->settings['require_child_theme'] );
+	}
 
+	/**
+	 * Assign properties and run hook.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
+	public function run() {
 		if ( ! $this->is_compatible() ) {
 			add_action( 'plugins_loaded', array( $this, 'deactivate' ) );
 		}

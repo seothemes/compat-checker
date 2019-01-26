@@ -57,7 +57,7 @@ $compat_settings = apply_filters( 'compat_checker_settings', array(
 
 /*
 |--------------------------------------------------------------------------
-| Initialize class.
+| Instantiate class.
 |--------------------------------------------------------------------------
 |
 | Here we instantiate the Compat_Checker class and call the `run()` method.
@@ -68,8 +68,8 @@ $compat_settings = apply_filters( 'compat_checker_settings', array(
 |
 */
 
-$compat_checker = new Compat_Checker();
-$compat_checker->run( $compat_settings );
+$compat_checker = new Compat_Checker( $compat_settings );
+$compat_checker->run();
 
 /*
 |--------------------------------------------------------------------------

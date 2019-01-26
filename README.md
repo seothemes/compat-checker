@@ -94,22 +94,22 @@ $compat_settings = apply_filters( 'compat_checker_settings', array(
 
 ### 3. Instantiate Class
 
-Genesis Compat has a `run()` method that must be used to run the class. This method accepts either a path to the `composer.json` file or an array of settings. If neither are provided, the default settings will be used, which can also be filtered using the `compat_checker_defaults` hook. 
+The Genesis_Compat class accepts either a path to the `composer.json` file or an array of settings. If neither are provided, the default settings will be used, which can also be filtered using the `compat_checker_defaults` hook. The `run()` method needs to be called once the class has been instantiated.
 
 #### Using composer.json
 
 If using `composer.json` for your settings, pass in the path to the `run()` method:
 
 ```php
-$compat_checker = new Compat_Checker();
-$compat_checker->run( __DIR__ . '/composer.json' );
+$compat_checker = new Compat_Checker( __DIR__ . '/composer.json' );
+$compat_checker->run();
 ```
 
 #### Using PHP array
 
 ```php
-$compat_checker = new Compat_Checker();
-$compat_checker->run( $compat_settings );
+$compat_checker = new Compat_Checker( $compat_settings );
+$compat_checker->run();
 ```
 
 ### 4. Check Compatibility
