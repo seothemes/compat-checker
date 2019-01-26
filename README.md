@@ -4,7 +4,7 @@ Composer package or drop-in class to check PHP, WordPress and Genesis compatibil
 
 ## Installation
 
-Compat Checker can be installed as a drop-in class or using Composer.
+Compat Checker can be installed as a drop-in class or using Composer. See the [example plugin](https://github.com/seothemes/compat-checker/blob/master/example-plugin.php) for a quick guide.
 
 ### Composer (recommended)
 
