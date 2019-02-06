@@ -177,7 +177,7 @@ class Compat_Checker {
 				$GLOBALS['wp_version']
 			);
 
-		} elseif ( $this->require_genesis && 'Genesis' !== $this->parent_theme->Name ) {
+		} elseif ( $this->require_genesis && ! $this->parent_theme ) {
 			return sprintf(
 				__( 'Sorry, you cannot run the <strong>%1$s</strong> plugin without an active Genesis child theme. Please install and activate a Genesis child theme and try again.', 'compat-checker' ),
 				$this->plugin_name
@@ -191,7 +191,7 @@ class Compat_Checker {
 				$this->parent_theme->Version
 			);
 
-		} elseif ( $this->require_child_theme && 'Genesis' !== $this->parent_theme->Name && 'Genesis' !== $this->active_theme->Name ) {
+		} elseif ( $this->require_child_theme && $this->parent_theme && 'Genesis' !== $this->parent_theme->Name && 'Genesis' !== $this->active_theme->Name ) {
 			return sprintf(
 				__( 'Sorry, you cannot run the <strong>%1$s</strong> plugin without an active Genesis child theme. Please install and activate a Genesis child theme and try again.', 'compat-checker' ),
 				$this->plugin_name
